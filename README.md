@@ -1,6 +1,6 @@
-# Project Erdos
+# Project Halmos
 
-Aim of project Erdos is to create a reinforcement learning model for automated trading of cryptocurrencies. The model is inspired by [Mnih et al (2015)](https://www.nature.com/articles/nature14236). 
+Aim of project Halmos is to create a reinforcement learning model for automated trading of cryptocurrencies. The model is inspired by [Mnih et al (2015)](https://www.nature.com/articles/nature14236). 
 
 ## Data
 Dataset consists of 30 minute interval price and order-book data of 9 cryptocurrencies, namely, ADA, ATOM, BCH, BNB, BTC, DOGE, ETH, SOL and XRP. The raw data has open, high, low and close prices and ask10 and bid10 of order book information in respect of each cryptocurrency. We transform the raw data into features as below.
@@ -31,7 +31,7 @@ $$p_s = \frac{close_s + high_s + low_s}{3}$$
 7. true range indicator:
 $$\kappa_t = \frac{\max(high_t, close_{t-1}) - \min(low_t, close_{t-1})}{close_t}$$
 
-$N$ is the observation or lookback period and is a hyper parameter that needs to be determined through experimentation. $N=48$ is a good starting value. The tuple $x_t = (\delta_t, \nu_t, \mu_t, \sigma_t, \rho_t, \beta_t, \kappa_t)$ makes the feature vector in respect of each cryptocurrency. The final feature vector is a concatenation of all feature vectors (so it is of dimension $9\times 7 = 63$).
+$N$ is the observation or lookback period and is a hyper parameter that needs to be determined through experimentation. $N=48$ is a good starting value. The tuple $x_t = (\delta_t, \nu_t, \mu_t, \sigma_t, \rho_t, \beta_t, \kappa_t)$ makes the feature vector in respect of each cryptocurrency. The final feature vector is a concatenation of all feature vectors (so it is of dimension $ 9 \times 7 = 63 $ ).
 
 ## Action
 The action space in this set-up is a 9 element vector $a$, each component representing investment in a cryptocurrency. $a$ is constrained such that $a_i \in [-1,1]$ and $\Vert a \Vert_1 \leq 1$.
